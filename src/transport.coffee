@@ -29,7 +29,7 @@ class SockJSConnection extends stream.Stream
         return '<SockJSConnection ' + @id + '>'
 
     write: (string) ->
-        return @_session.send('' + string)
+        return @_session.send(string)
 
     end: (string) ->
         if string
@@ -196,7 +196,7 @@ class Session
     send: (payload) ->
         if @readyState isnt Transport.OPEN
             return false
-        @send_buffer.push('' + payload)
+        @send_buffer.push(payload)
         if @recv
             @tryFlush()
         return true
